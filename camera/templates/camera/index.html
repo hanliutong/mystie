@@ -5,92 +5,99 @@
         <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
         <title>Camera API</title>
+        <script type="text/javascript">
+            function show(x)
+            {
+                var y=document.querySelector("#"+x)
+                var showPicture = document.querySelector("#show_"+x);
+                var files = y.files,
+                            file;
+                if (files && files.length > 0) {
+                    file = files[0];
+                    try {
+                            var URL = window.URL || window.webkitURL;
+                            var imgURL = URL.createObjectURL(file);
+
+                            showPicture.src = imgURL;
+                            showPicture.onload = function() {
+                            showPicture.height = 0.9 * showPicture.height*(window.innerWidth/showPicture.width);
+                            showPicture.width = 0.9 * window.innerWidth ;
+                            URL.revokeObjectURL(imgURL);
+                        };
+                    }
+                    catch (e) {
+                        try {
+                            var fileReader = new FileReader();
+                            fileReader.onload = function (event) {
+                                showPicture.src = event.target.result;
+                            };
+                            fileReader.readAsDataURL(file);
+                        }
+                        catch (e) {
+                            var error = document.querySelector("#error");
+                            if (error) {
+                                error.innerHTML = "Neither createObjectURL or FileReader are supported";
+                            }
+                        }
+                    }
+                }
+            }
+            </script>
     </head>
 
     <body>
         <div class="container">
             <section class="main-content">
-                <form action="/your-name/" method="post">
+                <form action="" method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    <table border="1">
+                        <tr>
+                            <td>
+                                正面<br>
+                                <img src="about:blank" alt="" id="show_id_front" width="" height=""><br>
+                                {{ form.front }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                右面<br>
+                                <img src="about:blank" alt="" id="show_id_right" width="" height=""><br>
+                                {{ form.right }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                后面<br>
+                                <img src="about:blank" alt="" id="show_id_back" width="" height=""><br>
+                                {{ form.back }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                左面<br>
+                                <img src="about:blank" alt="" id="show_id_left" width="" height=""><br>
+                                {{ form.left }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                顶面<br>
+                                <img src="about:blank" alt="" id="show_id_top" width="" height=""><br>
+                                {{ form.top }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                底面<br>
+                                <img src="about:blank" alt="" id="show_id_bottom" width="" height=""><br>
+                                {{ form.bottom }}
+                            </td>
+                        </tr>
+                    </table>
                     <input type="submit" value="Submit" />
                 </form>
 
-                <h2>展示:</h2>
-                <p>
-                    <img src="about:blank" alt="" id="show-front" width="" height="">
-                </p>
-                <p>
-                    <img src="about:blank" alt="" id="show-right" width="" height="">
-                </p>
-                <p>
-                    <img src="about:blank" alt="" id="show-back" width="" height="">
-                </p>
-                <p>
-                    <img src="about:blank" alt="" id="show-left" width="" height="">
-                </p>
-                <p>
-                    <img src="about:blank" alt="" id="show-top" width="" height="">
-                </p>
-                <p>
-                    <img src="about:blank" alt="" id="show-bottom" width="" height="">
-                </p>
             </section>
         </div>
-
-
-        <script>
-          (function () {
-				// var MyTest = document.getElementById("take-picture").files[0];
-				// var reader = new FileReader();
-				// reader.readAsDataURL(MyTest);
-				// reader.onload = function(theFile) {
-				// 　　var image = new Image();
-				// image.src = theFile.target.result;
-				// image.onload = function() {
-				// 　　alert("图片的宽度为"+this.width+",长度为"+this.height);
-				// };
-				// }
-              var takePicture = document.querySelector("#id_front"),
-                  showPicture = document.querySelector("#show-front");
-
-              if (takePicture && showPicture) {
-                  takePicture.onchange = function (event) {
-                      var files = event.target.files,
-                          file;
-                      if (files && files.length > 0) {
-                          file = files[0];
-                          try {
-                              var URL = window.URL || window.webkitURL;
-                              var imgURL = URL.createObjectURL(file);
-                              
-                              showPicture.src = imgURL;
-                              showPicture.onload = function() {
-                                // alert("showPicture.height:"+showPicture.height+"\nshowPicture.width"+showPicture.width+"\nwindow.innerWidth"+window.innerWidth);
-                                showPicture.height = 0.9 * showPicture.height*(window.innerWidth/showPicture.width);
-							    showPicture.width = 0.9 * window.innerWidth ;
-                                URL.revokeObjectURL(imgURL);
-                              };
-                          }
-                          catch (e) {
-                              try {
-                                  var fileReader = new FileReader();
-                                  fileReader.onload = function (event) {
-                                      showPicture.src = event.target.result;
-                                  };
-                                  fileReader.readAsDataURL(file);
-                              }
-                              catch (e) {
-                                  var error = document.querySelector("#error");
-                                  if (error) {
-                                      error.innerHTML = "Neither createObjectURL or FileReader are supported";
-                                  }
-                              }
-                          }
-                      }
-                  };
-              }
-          })();
-        </script>
     </body>
 </html>

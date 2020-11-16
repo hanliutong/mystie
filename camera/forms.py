@@ -15,3 +15,10 @@ class NameForm(forms.Form):
     top.widget.attrs['capture'] = "user"
     bottom.widget.attrs['capture'] = "user"
 
+    front.widget.attrs['onchange'] = "show(this.id)"
+    right.widget.attrs['onchange'] = "show(this.id)"
+    back.widget.attrs['onchange'] = "show(this.id)"
+    left.widget.attrs['onchange'] = "show(this.id)"
+    top.widget.attrs['onchange'] = "show(this.id)"
+    bottom.widget.attrs['onchange'] = "show(this.id)"
+
