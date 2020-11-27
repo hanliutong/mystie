@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>DeepCube_Hanliutong</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    {% load static %}
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'camera/main.css' %}" \>
+</head>
+
+<body onload="setState()">
+    <div class="container">
+        <center>
+            <div id="state_output"></div>
+            <div id="color_output"></div>
+            <div id="W_output"></div>
+            <div id="Y_output"></div>
+            <div id="B_output"></div>
+            <div id="G_output"></div>
+            <div id="O_output"></div>
+            <div id="R_output"></div>
+            <div class="container" width=90%>
+                <!-- "U_-1", "U_1", "D_-1", "D_1", "L_-1", "L_1", "R_-1", "R_1", "B_-1", "B_1", "F_-1", "F_1" -->
+                <button id="U_-1" type="button">U_-1</button>
+                <button id="U_1" type="button">U_1</button>
+                <button id="D_-1" type="button">D_-1</button>
+                <button id="D_1" type="button">D_1</button>
+                <button id="L_-1" type="button">L_-1</button>
+                <button id="L_1" type="button">L_1</button>
+                <button id="R_-1" type="button">R_-1</button>
+                <button id="R_1" type="button">R_1</button>
+                <button id="B_-1" type="button">B_-1</button>
+                <button id="B_1" type="button">B_1</button>
+                <button id="F_-1" type="button">F_-1</button>
+                <button id="F_1" type="button">F_1</button>
+            </div>
+            <div id="program_container" class="container">
+                <div id="solution_container" class="container">
+                    <button disabled id="first_state" type="button">&#060;&#060;</button>
+                    <button disabled id="prev_state" type="button">&#060;</button>
+                    <button disabled id="next_state" type="button">&#062;</button>
+                    <button disabled id="last_state" type="button">&#062;&#062;</button>
+                    <h4 id="solution_text">Solution:</h4>
+                </div>
+
+                <div id="cube_div" class="container" style="padding: 60px">
+                    <section class="cube_container">
+                        <div id="cube">
+                            <figure id="front" class="front">
+                            </figure>
+                            <figure id="back" class="back">
+                            </figure>
+                            <figure id="right" class="right">
+                            </figure>
+                            <figure id="left" class="left">
+                            </figure>
+                            <figure id="top" class="top">
+                            </figure>
+                            <figure id="bottom" class="bottom">
+                            </figure>
+                        </div>
+                    </section>
+                </div>
+
+                <br>
+
+                <div id="button_container" class="container">
+                    <button disabled id="scramble" type="button">Scramble</button>
+                    <button disabled id="solve" type="button">Solve!</button>
+                </div>
+            </div>
+        </center>
+    </div>
+    <div>
+        <input id ="verify_str" type="text">
+        <button id = "verify">verify</button>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% load static %}
+    <script src="{% static 'camera/testset.js' %}"></script>
+    <script src="{% static 'camera/verify.js' %}"></script>
+    <script src="{% static 'camera/rch.js' %}"></script>
+    <script src="{% static 'camera/rclib.js' %}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
