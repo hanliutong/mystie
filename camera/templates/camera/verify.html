@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    {% load static %}
+    <script src="{% static 'camera/verify.js' %}"></script>
+    <script src="{% static 'camera/rch.js' %}"></script>
+    <script src="{% static 'camera/rclib.js' %}"></script>
+
+</head>
+<body>
+<!-- <body onload="test_setState()"> -->
+    <!-- <input id ="verify_str" type="text"> -->
+    <div id="ans"></div>
+    <script type="text/javascript">
+        var state_verify = {{ state|safe }}; 
+        var col = "";
+        col += colorName[Math.floor(state_verify[0]/9)];
+        col += colorName[Math.floor(state_verify[1]/9)];
+        col += colorName[Math.floor(state_verify[2]/9)];
+        col += colorName[Math.floor(state_verify[3]/9)];
+        col += colorName[Math.floor(state_verify[4]/9)];
+        col += colorName[Math.floor(state_verify[5]/9)];
+        col += colorName[Math.floor(state_verify[6]/9)];
+        col += colorName[Math.floor(state_verify[7]/9)];
+        col += colorName[Math.floor(state_verify[8]/9)];
+        col += colorName[Math.floor(state_verify[18]/9)];
+        col += colorName[Math.floor(state_verify[19]/9)];
+        col += colorName[Math.floor(state_verify[20]/9)];
+        col += colorName[Math.floor(state_verify[45]/9)];
+        col += colorName[Math.floor(state_verify[46]/9)];
+        col += colorName[Math.floor(state_verify[47]/9)];
+        col += colorName[Math.floor(state_verify[27]/9)];
+        col += colorName[Math.floor(state_verify[28]/9)];
+        col += colorName[Math.floor(state_verify[29]/9)];
+        col += colorName[Math.floor(state_verify[44]/9)];
+        col += colorName[Math.floor(state_verify[43]/9)];
+        col += colorName[Math.floor(state_verify[42]/9)];
+        col += colorName[Math.floor(state_verify[21]/9)];
+        col += colorName[Math.floor(state_verify[22]/9)];
+        col += colorName[Math.floor(state_verify[23]/9)];
+        col += colorName[Math.floor(state_verify[48]/9)];
+        col += colorName[Math.floor(state_verify[49]/9)];
+        col += colorName[Math.floor(state_verify[50]/9)];
+        col += colorName[Math.floor(state_verify[30]/9)];
+        col += colorName[Math.floor(state_verify[31]/9)];
+        col += colorName[Math.floor(state_verify[32]/9)];
+        col += colorName[Math.floor(state_verify[41]/9)];
+        col += colorName[Math.floor(state_verify[40]/9)];
+        col += colorName[Math.floor(state_verify[39]/9)];
+        col += colorName[Math.floor(state_verify[24]/9)];
+        col += colorName[Math.floor(state_verify[25]/9)];
+        col += colorName[Math.floor(state_verify[26]/9)];
+        col += colorName[Math.floor(state_verify[51]/9)];
+        col += colorName[Math.floor(state_verify[52]/9)];
+        col += colorName[Math.floor(state_verify[53]/9)];
+        col += colorName[Math.floor(state_verify[33]/9)];
+        col += colorName[Math.floor(state_verify[34]/9)];
+        col += colorName[Math.floor(state_verify[35]/9)];
+        col += colorName[Math.floor(state_verify[38]/9)];
+        col += colorName[Math.floor(state_verify[37]/9)];
+        col += colorName[Math.floor(state_verify[36]/9)];
+        col += colorName[Math.floor(state_verify[9]/9)];
+        col += colorName[Math.floor(state_verify[10]/9)];
+        col += colorName[Math.floor(state_verify[11]/9)];
+        col += colorName[Math.floor(state_verify[12]/9)];
+        col += colorName[Math.floor(state_verify[13]/9)];
+        col += colorName[Math.floor(state_verify[14]/9)];
+        col += colorName[Math.floor(state_verify[15]/9)];
+        col += colorName[Math.floor(state_verify[16]/9)];
+        col += colorName[Math.floor(state_verify[17]/9)];
+        if (verify_main(col) == 0)
+            document.getElementById("ans").innerHTML = "passed";
+        else
+            document.getElementById("ans").innerHTML = "error";
+</script>
+</body>
+
+</html>

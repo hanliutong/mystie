@@ -15,7 +15,7 @@
 <body onload="setState()">
     <div class="container">
         <center>
-            <div id="state_output"></div>
+            
             <div id="color_output"></div>
             <div id="W_output"></div>
             <div id="Y_output"></div>
@@ -23,6 +23,7 @@
             <div id="G_output"></div>
             <div id="O_output"></div>
             <div id="R_output"></div>
+            <div id="state_output"></div>
             <div class="container" width=90%>
                 <!-- "U_-1", "U_1", "D_-1", "D_1", "L_-1", "L_1", "R_-1", "R_1", "B_-1", "B_1", "F_-1", "F_1" -->
                 <button id="U_-1" type="button">U_-1</button>
@@ -76,7 +77,10 @@
         </center>
     </div>
     <div>
-        <input id ="verify_str" type="text">
+        <form method="post" action="/verify">
+            <input id ="verify_str" name="state" type="text">
+            <button id = "submit">send_verify</button>
+        </form>
         <button id = "verify">verify</button>
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -160,29 +160,29 @@ function setCube() {
 }
 function setState() {
 	var col = "cube : [";
-	var W = "W : [";
-	var Y = "Y : [";
-	var B = "B : [";
-	var G = "G : [";
-	var O = "O : [";
-	var R = "R : [";
+	var W = "\"W\" : [";
+	var Y = "\"Y\" : [";
+	var B = "\"B\" : [";
+	var G = "\"G\" : [";
+	var O = "\"O\" : [";
+	var R = "\"R\" : [";
 	// document.getElementById("givenState").value = state;
 	if (state.length == 0) 
 		state =  [2, 5, 8, 1, 4, 7, 0, 3, 6, 11, 14, 17, 10, 13, 16, 9, 12, 15, 20, 23, 26, 19, 22, 25, 18, 21, 24, 29, 32, 35, 28, 31, 34, 27, 30, 33, 42, 39, 36, 43, 40, 37, 44, 41, 38, 47, 50, 53, 46, 49, 52, 45, 48, 51];
 	for(var i=0;i<54;i++) {
-		col += colorName[Math.floor(state[i]/9)] + ", ";
+		col += colorName[Math.floor(state[i]/9)] + "\", ";
 		if (i < 9) {
-			W += colorName[Math.floor(state[i]/9)] + ", ";
+			W += "\"" + colorName[Math.floor(state[i]/9)] + "\", ";
 		} else if (i < 18) {
-			Y += colorName[Math.floor(state[i]/9)] + ", ";
+			Y += "\"" + colorName[Math.floor(state[i]/9)] + "\", ";
 		} else if (i < 27) {
-			O += colorName[Math.floor(state[i]/9)] + ", ";
+			O += "\"" + colorName[Math.floor(state[i]/9)] + "\", ";
 		} else if (i < 36) {
-			R += colorName[Math.floor(state[i]/9)] + ", ";
+			R += "\"" + colorName[Math.floor(state[i]/9)] + "\", ";
 		} else if (i < 45) {
-			B += colorName[Math.floor(state[i]/9)] + ", ";
+			B += "\"" + colorName[Math.floor(state[i]/9)] + "\", ";
 		} else if (i < 54) {
-			G += colorName[Math.floor(state[i]/9)] + ", ";
+			G += "\"" + colorName[Math.floor(state[i]/9)] + "\", ";
 		}
 	}
 	col = col.substring(0, col.length - 2);
@@ -193,15 +193,15 @@ function setState() {
 	O = O.substring(0, O.length - 2);
     R = R.substring(0, R.length - 2);
     
-    state_output.innerHTML ="[" + state.toString() + "]";
-    verify_str.value = state_output.innerHTML;
+    verify_str.value ="[" + state.toString() + "]";
 	color_output.innerHTML= col + "]";
-	W_output.innerHTML = W + "]";
-	Y_output.innerHTML = Y + "]";
-	B_output.innerHTML = B + "]";
-	G_output.innerHTML = G + "]";
-	O_output.innerHTML = O + "]";
-	R_output.innerHTML = R + "]";
+	W_output.innerHTML = W + "],";
+	Y_output.innerHTML = Y + "],";
+	B_output.innerHTML = B + "],";
+	G_output.innerHTML = G + "],";
+	O_output.innerHTML = O + "],";
+	R_output.innerHTML = R + "],";
+	state_output.innerHTML ="\"ans\" : [" + state.toString() + "]";
 }
 function nextState(moveTimeout=0) {
 	if (moves.length > 0) {
