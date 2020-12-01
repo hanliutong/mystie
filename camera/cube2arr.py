@@ -143,17 +143,17 @@ def sss(n,f):
 def output(f):
 	t=[]
 	for i in f.get('W'):
-		t.append(i)
+		t.append(int(i))
 	for i in f.get('Y'):
-		t.append(i)
+		t.append(int(i))
 	for i in f.get('O'):
-		t.append(i)
+		t.append(int(i))
 	for i in f.get('R'):
-		t.append(i)
+		t.append(int(i))
 	for i in f.get('B'):
-		t.append(i)
+		t.append(int(i))
 	for i in f.get('G'):
-		t.append(i)
+		t.append(int(i))
 	return t
 
 def check(n,ll):
