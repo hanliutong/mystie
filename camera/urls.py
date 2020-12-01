@@ -8,4 +8,5 @@ urlpatterns = [
     path('initState', views.initState, name='initState'),
     path('testset', views.testset, name='testset'),
     path('verify', views.verify, name='verify'),
+    path('color', views.color, name='color'),
 ]

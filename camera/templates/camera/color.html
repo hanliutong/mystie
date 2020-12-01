@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>DeepCube_Hanliutong</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+
+    <!--[if lt IE 9]>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <![endif]-->
+
+
+
+    <!-- Bootstrap -->
+    {% load static %}
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+      href="{% static 'camera/main.css' %}"\>
+
+
+
+  </head>
+  <body onload="setState()">
+    
+<div class="container">
+  <center>
+  <h2>DeepCubeA : Advanced Software Engineering Course Project——Hanliutong</h2>
+  <h2><a href="mailto:hanliutong20@mails.ucas.edu.cn">hanliutong20@mails.ucas.edu.cn</a></h2>
+
+	<div id="color_output"></div>
+	白色:<div id="W_output"></div>
+	黄色:<div id="Y_output"></div>
+	蓝色:<div id="B_output"></div>
+	绿色:<div id="G_output"></div>
+	橘色:<div id="O_output"></div>
+	红色:<div id="R_output"></div>
+	<center>
+		<div style="padding-top:60px">
+			<button disabled id="redButton" style="background-color: red;width: 40px;height: 40px" onclick="colorSelect(this)"></button>
+			<button disabled id="yellowButton" style="background-color: yellow;width: 40px;height: 40px" onclick="colorSelect(this)"></button>
+			<button disabled id="orangeButton" style="background-color: orange;width: 40px;height: 40px" onclick="colorSelect(this)"></button>
+			<button disabled id="greenButton" style="background-color: green;width: 40px;height: 40px" onclick="colorSelect(this)"></button>
+			<button disabled id="whiteButton" style="background-color: white;width: 40px;height: 40px" onclick="colorSelect(this)"></button>
+			<button disabled id="blueButton" style="background-color: blue;width: 40px;height: 40px" onclick="colorSelect(this)"></button>
+			<button disabled id="cancelButton" style="background-color: grey;width: 40px;height: 40px" onclick="colorSelect(this)"></button>
+		</div>
+		
+		<table>
+			<tr>
+				<td></td>
+				<td style="width: 3px"></td>
+				<td>
+					<div>
+						<button disabled style="background-color: white;width: 40px;height: 40px" id="stickers_0" onclick="colorSet(this)">0</button>
+						<button disabled style="background-color: white;width: 40px;height: 40px" id="stickers_1" onclick="colorSet(this)">1</button>
+						<button disabled style="background-color: white;width: 40px;height: 40px" id="stickers_2" onclick="colorSet(this)">2</button>
+					</div>
+					<div>
+						<button disabled style="background-color: white;width: 40px;height: 40px" id="stickers_3" onclick="colorSet(this)">3</button>
+						<button disabled style="background-color: white;width: 40px;height: 40px" id="stickers_4" onclick="">4</button>
+						<button disabled style="background-color: white;width: 40px;height: 40px" id="stickers_5" onclick="colorSet(this)">5</button>
+					</div>
+					<div>
+						<button disabled style="background-color: white;width: 40px;height: 40px" id="stickers_6" onclick="colorSet(this)">6</button>
+						<button disabled style="background-color: white;width: 40px;height: 40px" id="stickers_7" onclick="colorSet(this)">7</button>
+						<button disabled style="background-color: white;width: 40px;height: 40px" id="stickers_8" onclick="colorSet(this)">8</button>
+					</div>
+				</td>
+				<td style="width: 3px"></td>
+				<td></td>
+				<td style="width: 3px"></td>
+				<td></td>
+			</tr>
+			<tr style="height: 3px"></tr>
+			<tr>
+				<td>
+					<div>
+						<button disabled style="background-color: orange;width: 40px;height: 40px" id="stickers_18" onclick="colorSet(this)">18</button>
+						<button disabled style="background-color: orange;width: 40px;height: 40px" id="stickers_19" onclick="colorSet(this)">19</button>
+						<button disabled style="background-color: orange;width: 40px;height: 40px" id="stickers_20" onclick="colorSet(this)">20</button>
+					</div>
+					<div>
+						<button disabled style="background-color: orange;width: 40px;height: 40px" id="stickers_21" onclick="colorSet(this)">21</button>
+						<button disabled style="background-color: orange;width: 40px;height: 40px" id="stickers_22" onclick="">22</button>
+						<button disabled style="background-color: orange;width: 40px;height: 40px" id="stickers_23" onclick="colorSet(this)">23</button>
+					</div>
+					<div>
+						<button disabled style="background-color: orange;width: 40px;height: 40px" id="stickers_24" onclick="colorSet(this)">24</button>
+						<button disabled style="background-color: orange;width: 40px;height: 40px" id="stickers_25" onclick="colorSet(this)">25</button>
+						<button disabled style="background-color: orange;width: 40px;height: 40px" id="stickers_26" onclick="colorSet(this)">26</button>
+					</div>
+				</td>
+				<td style="width: 3px"></td>
+				<td>
+					<div>
+						<button disabled style="background-color: green;width: 40px;height: 40px;" id="stickers_45" onclick="colorSet(this)">45</button>
+						<button disabled style="background-color: green;width: 40px;height: 40px;" id="stickers_46" onclick="colorSet(this)">46</button>
+						<button disabled style="background-color: green;width: 40px;height: 40px;" id="stickers_47" onclick="colorSet(this)">47</button>
+					</div>
+					<div>
+						<button disabled style="background-color: green;width: 40px;height: 40px;" id="stickers_48" onclick="colorSet(this)">48</button>
+						<button disabled style="background-color: green;width: 40px;height: 40px;" id="stickers_49" onclick="">49</button>
+						<button disabled style="background-color: green;width: 40px;height: 40px;" id="stickers_50" onclick="colorSet(this)">50</button>
+					</div>
+					<div>
+						<button disabled style="background-color: green;width: 40px;height: 40px;" id="stickers_51" onclick="colorSet(this)">51</button>
+						<button disabled style="background-color: green;width: 40px;height: 40px;" id="stickers_52" onclick="colorSet(this)">52</button>
+						<button disabled style="background-color: green;width: 40px;height: 40px;" id="stickers_53" onclick="colorSet(this)">53</button>
+					</div>
+				</td>
+				<td style="width: 3px"></td>
+				<td>
+					<div>
+						<button disabled style="background-color: red;width: 40px;height: 40px;" id="stickers_27" onclick="colorSet(this)">27</button>
+						<button disabled style="background-color: red;width: 40px;height: 40px;" id="stickers_28" onclick="colorSet(this)">28</button>
+						<button disabled style="background-color: red;width: 40px;height: 40px;" id="stickers_29" onclick="colorSet(this)">29</button>
+					</div>
+					<div>
+						<button disabled style="background-color: red;width: 40px;height: 40px;" id="stickers_30" onclick="colorSet(this)">30</button>
+						<button disabled style="background-color: red;width: 40px;height: 40px;" id="stickers_31" onclick="">31</button>
+						<button disabled style="background-color: red;width: 40px;height: 40px;" id="stickers_32" onclick="colorSet(this)">32</button>
+					</div>
+					<div>
+						<button disabled style="background-color: red;width: 40px;height: 40px;" id="stickers_33" onclick="colorSet(this)">33</button>
+						<button disabled style="background-color: red;width: 40px;height: 40px;" id="stickers_34" onclick="colorSet(this)">34</button>
+						<button disabled style="background-color: red;width: 40px;height: 40px;" id="stickers_35" onclick="colorSet(this)">35</button>
+					</div>
+				</td>
+				<td style="width: 3px"></td>
+				<td>
+					<div>
+						<button disabled style="background-color: blue;width: 40px;height: 40px;" id="stickers_44" onclick="colorSet(this)">44</button>
+						<button disabled style="background-color: blue;width: 40px;height: 40px;" id="stickers_43" onclick="colorSet(this)">43</button>
+						<button disabled style="background-color: blue;width: 40px;height: 40px;" id="stickers_42" onclick="colorSet(this)">42</button>
+					</div>
+					<div>
+						<button disabled style="background-color: blue;width: 40px;height: 40px;" id="stickers_41" onclick="colorSet(this)">41</button>
+						<button disabled style="background-color: blue;width: 40px;height: 40px;" id="stickers_40" onclick="">40</button>
+						<button disabled style="background-color: blue;width: 40px;height: 40px;" id="stickers_39" onclick="colorSet(this)">39</button>
+					</div>
+					<div>
+						<button disabled style="background-color: blue;width: 40px;height: 40px;" id="stickers_38" onclick="colorSet(this)">38</button>
+						<button disabled style="background-color: blue;width: 40px;height: 40px;" id="stickers_37" onclick="colorSet(this)">37</button>
+						<button disabled style="background-color: blue;width: 40px;height: 40px;" id="stickers_36" onclick="colorSet(this)">36</button>
+					</div>
+				</td>
+			</tr>
+			<tr style="height: 3px"></tr>
+			<tr>
+				<td></td>
+				<td style="width: 3px"></td>
+				<td>
+					<div>
+						<button disabled style="background-color: yellow;width: 40px;height: 40px" id="stickers_9" onclick="colorSet(this)">9</button>
+						<button disabled style="background-color: yellow;width: 40px;height: 40px" id="stickers_10" onclick="colorSet(this)">10</button>
+						<button disabled style="background-color: yellow;width: 40px;height: 40px" id="stickers_11" onclick="colorSet(this)">11</button>
+					</div>
+					<div>
+						<button disabled style="background-color: yellow;width: 40px;height: 40px" id="stickers_12" onclick="colorSet(this)">12</button>
+						<button disabled style="background-color: yellow;width: 40px;height: 40px" id="stickers_13" onclick="">13</button>
+						<button disabled style="background-color: yellow;width: 40px;height: 40px" id="stickers_14" onclick="colorSet(this)">14</button>
+					</div>
+					<div>
+						<button disabled style="background-color: yellow;width: 40px;height: 40px" id="stickers_15" onclick="colorSet(this)">15</button>
+						<button disabled style="background-color: yellow;width: 40px;height: 40px" id="stickers_16" onclick="colorSet(this)">16</button>
+						<button disabled style="background-color: yellow;width: 40px;height: 40px" id="stickers_17" onclick="colorSet(this)">17</button>
+					</div>
+				</td>
+				<td style="width: 3px"></td>
+				<td></td>
+				<td style="width: 3px"></td>
+				<td></td>
+			</tr>
+		</table>
+	</center>
+
+	<div id="program_container" class="container">
+		<div id="solution_container" class="container">
+			<button disabled id="first_state" type="button">&#060;&#060;</button>
+			<button disabled id="prev_state" type="button">&#060;</button>
+			<button disabled id="next_state" type="button">&#062;</button>
+			<button disabled id="last_state" type="button">&#062;&#062;</button>
+			<h4 id="solution_text">Solution:</h4>
+		</div>
+
+		<div id="cube_div" class="container" style="padding: 60px">
+			<section class="cube_container">
+				<div id="cube">
+					<figure id="front" class="front">
+					</figure>
+					<figure id="back" class="back">
+					</figure>
+					<figure id="right" class="right">
+					</figure>
+					<figure id="left" class="left">
+					</figure>
+					<figure id="top" class="top">
+					</figure>
+					<figure id="bottom" class="bottom">
+					</figure>
+				</div>
+			</section>
+		</div>
+
+		<br>
+
+		<div id="button_container" class="container">
+			<div>
+                <input id ="verify_str" name="state" type="text">
+                <button id = "verify">verify</button>
+            </div>
+			<button disabled id="solve" type="button">Solve!</button>
+		</div>
+	</div>
+  </center>
+</div>
+
+<br>
+<center>
+	<h4>
+		Use the mouse to turn the cube. &#13;&#10;
+	</h4>
+	<h4>
+		Turn the faces with the U/D/L/R/B/F keys.
+		Hold shift to turn faces couter-clockwise.
+	</h4>
+	<h4>
+		Press scramble to randomly scramble the cube.
+		Press solve to solve the cube using deep learning!
+	</h4>
+</center>
+
+<br>
+<div class="well well-lg">
+	<center>
+	<span class="paper-year">ASE TA group. 2019</span>
+	</center>
+</div>
+
+
+
+
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--script src="/static/jquery.min.js"></script-->
+{% load static %}
+<script src="{% static 'camera/color.js' %}"></script>
+<script src="{% static 'camera/verify.js' %}"></script>
+<script src="{% static 'camera/rch.js' %}"></script>
+<script src="{% static 'camera/rclib.js' %}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>z
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
