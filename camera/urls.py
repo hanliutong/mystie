@@ -9,4 +9,5 @@ urlpatterns = [
     path('testset', views.testset, name='testset'),
     path('verify', views.verify, name='verify'),
     path('color', views.color, name='color'),
+    path('cube2arr', views.cube2arr, name='cube2arr'),
 ]

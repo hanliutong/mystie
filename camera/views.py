@@ -5,6 +5,7 @@ from django.template import loader
 import json
 from django.http import HttpResponse
 from .forms import NameForm
+import camera.cube2arr as c2a
 
 def index(request):
     # 如果form通过POST方法发送数据
@@ -28,6 +29,24 @@ def cube(request):
     template = loader.get_template('camera/cube.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
+def cube2arr(request):
+    if request.method == 'POST':
+        try:
+            received_json_data = json.loads(request.body)
+        except Exception :
+            return HttpResponse(json.dumps("error"), content_type="application/json")
+        if len(received_json_data) == 6 :
+            if len(received_json_data["W"]) == 9 and \
+                len(received_json_data["B"]) == 9 and \
+                len(received_json_data["G"]) == 9 and \
+                len(received_json_data["R"]) == 9 and \
+                len(received_json_data["Y"]) == 9 and \
+                len(received_json_data["O"]) == 9 :
+                arr = c2a.solve(received_json_data)
+                return HttpResponse(json.dumps(arr), content_type="application/json")
+    return HttpResponse(json.dumps("error"), content_type="application/json")
+    
 
 def testset(request):
     template = loader.get_template('camera/testset.html')
