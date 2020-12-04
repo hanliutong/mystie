@@ -1,18 +1,6 @@
 import cv2
 import numpy as np
 import requests
-import win32gui
-import win32api
-import win32con
-from pymouse import *
-from pykeyboard import *
-from win32con import KEYEVENTF_KEYUP
-from win32api import keybd_event
-import time
-from PIL import ImageGrab
-from aip import AipOcr
-import xlwt
-
 
 def judgeColor(hsv):
     h,s,v=hsv[0],hsv[1],hsv[2]
@@ -22,13 +10,11 @@ def judgeColor(hsv):
         return 'W'
     elif h>=156 and h<=169 and s>=43 and s<=255 and v>=46 and v<=255:
         return 'R'
-    elif h>=0 and h<=5 and s>=43 and s<=255 and v>=46 and v<=255:
-        return 'R'
     elif h>=45 and h<=86 and s>=43 and s<=255 and v>=46 and v<=255:
         return 'G'
     elif h>=170 and h<=180 and s>=43 and s<=255 and v>=46 and v<=255:
         return 'O'
-    elif h>=6 and h<=23 and s>=43 and s<=255 and v>=46 and v<=255:
+    elif h>=0 and h<=23 and s>=43 and s<=255 and v>=46 and v<=255:
         return 'O'
     elif h>=100 and h<=124 and s>=43 and s<=255 and v>=46 and v<=255:
         return 'B'
@@ -287,31 +273,6 @@ def check_dic(n):
             return False
     return True
 
-def reset_window_pos(targetTitle):
-    hWndList = []
-    win32gui.EnumWindows(lambda hWnd, param: param.append(hWnd), hWndList)
-    for hwnd in hWndList:
-          clsname = win32gui.GetClassName(hwnd)
-          title = win32gui.GetWindowText(hwnd)
-          if (title.find(targetTitle) >= 0): #调整目标窗口到坐标(600,300),大小设置为(600,600)
-              win32gui.SetWindowPos(hwnd, win32con.HWND_TOPMOST, 0,0,1280,1280, win32con.SWP_SHOWWINDOW)
-
-def auto_run(steps):
-    reset_window_pos("ROBOTC-Trial")
-    m = PyMouse()
-    k = PyKeyboard()
-    a = m.position()
-    print(a)
-
-    m.click(505, 419)
-
-    for x in steps:
-        k.tap_key(x)
-        time.sleep(0.01)
-
-    m.click(794, 75) ##下载
-    m.click(556, 470) ##运行
-
 if __name__=='__main__':
     while True:
         fflag=True
@@ -372,11 +333,10 @@ if __name__=='__main__':
         if sss(result,originData):
             r=output(originData)
             print(r)
-            post=requests.post("39.97.212.230:8080/cube2arr", data=r, headers={"Content-Type": "none"})
             break
         else:
             pass
         
-        
+        post=requests.post("39.97.212.230:8080/cube2arr", data=r, headers={"Content-Type": "none"})
     
     
